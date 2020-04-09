@@ -4,7 +4,13 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "local": " npm run loginWarning && cross-env REMOTE_HOST=\"https://localhost:8080\" DEV_MODE=\"true\" electron . --debug",
+    "local:agent": " npm run loginWarning && cross-env REMOTE_HOST=\"https://localhost:8080\" LOCAL_AGENT=\"http://localhost:8081\" DEV_MODE=\"true\" electron . --debug",
+    "dev": "cross-env REMOTE_HOST=\"https://pendo-dev.appspot.com\" DEV_MODE=\"true\" electron . --debug",
+    "staging": "cross-env REMOTE_HOST=\"https://pendo-test.appspot.com\" DEV_MODE=\"true\" electron . --debug",
+    "prod": "electron . --debug",
+    "loginWarning": "echo \"REMEMBER: You cannot use google SSO to log in while in dev mode\""
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +23,15 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^8.2.1"
+    "cross-env": "^4.0.0",
+    "devtron": "^1.3.0",
+    "electron": "^8.0.1",
+    "electron-packager": "^8.6.0",
+    "electron-winstaller": "^2.2.0",
+    "npm-run-all": "^4.0.2",
+    "request": "^2.70.0",
+    "rimraf": "^2.5.2",
+    "signcode": "^0.5.0",
+    "spectron": "~3.6.0"
   }
 }
